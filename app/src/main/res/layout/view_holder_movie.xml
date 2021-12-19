@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.movieslist.moviedetails.data.Movie" />
+
+        <variable
+            name="movie"
+            type="Movie" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_margin="8dp"
+        android:layout_marginTop="4dp"
+
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/movie_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/poster_image"
+
+                android:src="@color/backgroungcolor"
+                app:load="@{movie.poster}" />
+
+
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

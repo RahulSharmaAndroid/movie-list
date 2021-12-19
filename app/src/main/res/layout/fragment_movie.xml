@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.movie.MovieFragment">
+
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/movie_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroungcolor"
+
+            app:titleTextColor="@color/white">
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_baseline_dehaze_24"
+    android:layout_gravity="start"
+    />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+
+                android:text="Movies"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_search_24"
+                android:layout_gravity="end"
+                android:layout_marginRight="15dp"
+                />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollview"
+            android:background="@color/backgroungcolor"
+            android:layout_below="@+id/movie_toolbar"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                    android:id="@+id/carousel"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+
+                    app:showTopShadow="false"
+                    app:topShadowAlpha="0.6"
+                    app:showBottomShadow="false"
+                    app:bottomShadowAlpha="0.6"
+                    app:showCaption="false"
+                    app:showIndicator="true"
+                    app:showNavigationButtons="false"
+                    app:imageScaleType="fitCenter"
+                    app:carouselBackground="#333333"
+                    app:imagePlaceholder="@drawable/ic_picture"
+                    app:itemLayout="@layout/item_carousel"
+                    app:imageViewId="@id/img"
+                    app:previousButtonLayout="@layout/previous_button_layout"
+                    app:previousButtonId="@id/btn_previous"
+                    app:previousButtonMargin="4dp"
+                    app:nextButtonLayout="@layout/next_button_layout"
+                    app:nextButtonId="@id/btn_next"
+                    app:nextButtonMargin="4dp"
+                    app:carouselType="SHOWCASE"
+                    app:scaleOnScroll="false"
+                    app:scalingFactor="0.20"
+                    app:autoWidthFixing="false"
+                    app:autoPlay="false"
+                    app:autoPlayDelay="3000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Now Showing"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/movie_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/view_holder_movie" />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="com.example.movieslist.moviedetails.data.moviedetails.MovieDetails" />
+
+        <variable
+            name="movieDetails"
+            type="MovieDetails" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.details.DetailsFragment">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           >
+
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/movie_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroungcolor"
+
+                app:titleTextColor="@color/white">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
+                    android:layout_gravity="start"
+                    android:id="@+id/backPress"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+
+                    android:text="Movies"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_file_upload_24"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="15dp"
+                    />
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_below="@+id/movie_toolbar"
+                    android:weightSum="2">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.92"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:background="@color/backgroungcolor"
+
+                        >
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="200dp"
+                            android:orientation="vertical"
+                            android:layout_gravity="center"
+                            >
+                            <ImageView
+                                android:layout_width="120dp"
+
+                                android:layout_height="200dp"
+                                android:scaleType="centerCrop"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="20dp"
+                                app:load="@{movieDetails.poster}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="200dp"
+                            android:orientation="vertical"
+                            android:layout_gravity="center"
+                            >
+                            <TextView
+                                style="@style/TextAppearance.AppCompat.Title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@{movieDetails.title}"
+                                android:textSize="16sp"
+                                android:textColor="@color/white"
+                                tools:text="Movie name" />
+                            <TextView
+                                style="@style/TextAppearance.AppCompat.Title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text='@{movieDetails.rated +" | "+movieDetails.runtime+" | "+movieDetails.released}'
+                                android:textSize="13sp"
+                                android:textColor="@color/white"
+                                tools:text="Movie name" />
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="8dp">
+
+<RatingBar
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:numStars="5"
+    style="@android:style/Widget.Material.RatingBar.Small"
+    android:rating='@{Float.parseFloat(movieDetails.imdbRating ?? "0.0")}'
+   android:stepSize="0.5"
+    android:progressBackgroundTint="@color/white"
+    android:progressTint="@color/booknowcolor"
+
+    />
+                                <TextView
+                                    style="@style/TextAppearance.AppCompat.Title"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text='@{movieDetails.imdbRating ?? "0.0"}'
+                                    android:textColor="@color/white"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/ll15"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="8dp">
+
+                                <TextView
+                                    style="@style/TextAppearance.AppCompat.Title"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Imdb Votes : "
+                                    android:textColor="@color/white"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    style="@style/TextAppearance.AppCompat.Title"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{movieDetails.imdbVotes}"
+                                    android:textColor="@color/white"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:padding="8dp"
+                        >
+                        <TextView
+                            style="@style/TextAppearance.AppCompat.Title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Synopsis"
+                            android:layout_marginTop="45dp"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat.Title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{movieDetails.plot}"
+                            android:textColor="@color/black"
+android:layout_marginTop="25dp"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="155dp"
+app:cardCornerRadius="80dp"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentRight="true"
+               android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+
+                android:layout_marginRight="10dp"
+                app:cardElevation="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content">
+
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Book Now"
+                     android:paddingTop="10dp"
+                      android:paddingBottom="10dp"
+                      android:paddingLeft="30dp"
+                      android:paddingRight="30dp"
+                      android:textStyle="bold"
+                      android:textSize="16sp"
+
+                      android:textColor="@android:color/holo_blue_bright"
+/>
+
+                </RelativeLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </RelativeLayout>
+
+
+        <ProgressBar
+            android:id="@+id/details_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
